@@ -72,3 +72,6 @@ debug.log
 .pmx
 pm2.log
 pm2.pid
+
+#extra
+example.txt

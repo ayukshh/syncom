@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
  * User Schema
  * @property {string} email - User's email address (unique)
  * @property {string} password - Hashed password
+ * @property {string} position - position in the company default is employee 
  * @property {Date} createdAt - Timestamp of user creation
  */
 
@@ -20,6 +21,11 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: true,
         minlength: 6,
+    },
+    position:{
+        type:String,
+        default: "employee",
+        emum: ["employee","admin"]
     },
     createdat:{
         type: Date,

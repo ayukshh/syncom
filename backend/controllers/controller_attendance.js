@@ -11,6 +11,23 @@ export const GetAttendance = async (req, res, next) => {
     }
 };
 
+export const GetAttendanceById = async (req, res, next) => {
+    try {
+        const record = await Attendance.findOne({
+            _id: req.params.id,
+            user: req.user._id
+        });
+
+        if (!record) {
+            return res.status(404).json({ message: "Attendance record not found" });
+        }
+
+        res.json(record);
+    } catch (err) {
+        next(err);
+    }
+};
+
 export const DoAttendance = async (req, res, next) => {
     try {
         const newRecord = new Attendance({
